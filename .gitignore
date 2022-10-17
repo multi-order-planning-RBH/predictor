@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# dataset files
+*.csv
+
+# pickle files
+*.pkl

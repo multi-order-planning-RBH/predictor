@@ -8,12 +8,11 @@ from math import *
 class DistanceCalculator: 
 	def __init__(self):
 		self.G = pkl.load(open('bangkok_graph.pkl', 'rb'))
-		self.nodes = list(self.G.nodes())
+		self.nodes = self.G.nodes()
 
 	def computeHeuristic(self, u, v):
-		nodes = self.G.nodes()
-		u_point = (nodes[u]['y'], nodes[u]['x'])
-		v_point = (nodes[v]['y'], nodes[v]['x'])
+		u_point = (self.nodes[u]['y'], self.nodes[u]['x'])
+		v_point = (self.nodes[v]['y'], self.nodes[v]['x'])
 		coords_1 = u_point
 		coords_2 = v_point
 		R = 6371000

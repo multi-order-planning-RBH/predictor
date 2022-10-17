@@ -130,6 +130,7 @@ dmypy.json
 
 # dataset files
 *.csv
+*.xlsx
 
 # pickle files
 *.pkl

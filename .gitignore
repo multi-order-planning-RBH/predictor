@@ -137,3 +137,6 @@ dmypy.json
 
 # cache folder
 cache/
+
+# any text files
+*.txt

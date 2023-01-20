@@ -7,7 +7,7 @@ from math import *
 
 class DistanceCalculator: 
 	def __init__(self):
-		self.G = pkl.load(open('graph_fix.pkl', 'rb'))
+		self.G = pkl.load(open('graph_fix.pkl', 'rb')) 
 		self.nodes = self.G.nodes()
 
 	def computeHeuristic(self, u, v):
@@ -33,6 +33,5 @@ class DistanceCalculator:
 		'''
 		origin_node = nearest_nodes(self.G, u[1], u[0], return_dist=False)
 		destination_node = nearest_nodes(self.G, v[1], v[0], return_dist=False)
-  
-		# print(origin_node, destination_node)
+        # print(origin_node, destination_node)
 		return astar_path_length(self.G, origin_node, destination_node, heuristic=self.computeHeuristic, weight='length')

@@ -6,7 +6,7 @@ from sklearn.ensemble import GradientBoostingRegressor
 
 class DeliveryModel: 
     def __init__(self):
-        self.model = pkl.load(open('gbdt_m_delivery.pkl', 'rb'))
+        self.model = pkl.load(open('food_delivery_best_gbdt_m.pkl', 'rb'))
         self.distanceCalculator = DistanceCalculator()
         self.dayMap = {"MON":0, "TUE":1, "WED":2, "THU":3, "FRI":4, "SAT":5, "SUN":6}
 

@@ -105,7 +105,6 @@ class FoodPrepModel:
         
         output:
         - The array of predictions of the duration in minute (m) needed for a rider to travel from their position to merchant finishing their preparation
-        (please note that if you want to predict the duration needed from rider currently at point x and need to pick up food at point y and deliver at point z, you need to calculate the time it takes for x to go to y and the time it takes from a rider to from y to z)
         
         Note: 
         - When you set 'approx' to True, the model will approximate certain input feature for the sake of performance (speed) of prediction.

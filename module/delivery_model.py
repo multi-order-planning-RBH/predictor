@@ -3,12 +3,14 @@ import numpy as np
 from math import * 
 from module.distance_calculator import DistanceCalculator 
 from sklearn.ensemble import GradientBoostingRegressor
+import pandas as pd 
 
 class DeliveryModel: 
     def __init__(self):
         self.model = pkl.load(open('food_delivery_best_gbdt_m.pkl', 'rb'))
         self.distanceCalculator = DistanceCalculator()
         self.dayMap = {"MON":0, "TUE":1, "WED":2, "THU":3, "FRI":4, "SAT":5, "SUN":6}
+        self.col = ["u_lat", "u_lon", "v_lat", "v_lon","euc_dist","shortest_dist" ,"day_of_week_sin" ,"day_of_week_cos"]
 
     def get_euc(self, coords_1, coords_2):
         R = 6371000
@@ -66,5 +68,6 @@ class DeliveryModel:
         day_of_week_cos = np.apply_along_axis(lambda day : np.cos(day*(2.*np.pi/7)) , axis=0, arr=day_inverse)
         
         X = np.column_stack((merchant_lat, merchant_long, customer_lat, customer_long, EucDist, ShortestDist, day_of_week_sin, day_of_week_cos))
+        X = pd.DataFrame(X, columns=self.col)
         return self.model.predict(X)
     

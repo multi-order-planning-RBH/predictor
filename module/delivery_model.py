@@ -26,6 +26,7 @@ class DeliveryModel:
     
     def batch_predict(self, locations, day_of_week=[], approx=True):
         '''
+
         input:
         - locations = numpy array [(u_i,v_i) | i] where u_i = (lat,long) of the start location, 
         v_i = (lat_long) of the destination location 
@@ -40,6 +41,7 @@ class DeliveryModel:
         - When you set 'approx' to False, the model will compute certain input feature more accurately but in expense of the speed of the prediciton.
         
         '''
+        
         n = len(locations)
         idx = np.arange(0,n)
         if len(day_of_week) != n : 

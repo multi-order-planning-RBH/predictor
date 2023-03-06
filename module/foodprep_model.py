@@ -11,73 +11,21 @@ class FoodPrepModel:
         self.deliveryML = pkl.load(open('food_delivery_best_gbdt_m.pkl', 'rb'))      
         self.distanceCalculator = DistanceCalculator()
         self.dayMap = {"MON":0, "TUE":1, "WED":2, "THU":3, "FRI":4, "SAT":5, "SUN":6}
-        self.NationFoodCategories = ['NationFoodCategory_International',
-'NationFoodCategory_Isram',
-'NationFoodCategory_Japanese',
-'NationFoodCategory_Korean',
-'NationFoodCategory_Myanmar',     
-'NationFoodCategory_Thai',         
-'NationFoodCategory_Vietnam'
-]
-        self.FoodCategories = [
-            'FoodCategories_FastFood',
-        'FoodCategories_QuickMeal',
-        'FoodCategories_ขนมจีน',
-        'FoodCategories_ของหวาน',                  
-        'FoodCategories_ปิ้งย่าง',
-        'FoodCategories_พิซซ่า',                     
-        'FoodCategories_ร้านก๋วยเตี๋ยว',               
-        'FoodCategories_ร้านอาหาร',                 
-        'FoodCategories_สปาเก็ตตี้',                  
-        'FoodCategories_สุกี้ยากี้',
-        'FoodCategories_สเต๊ก',                     
-        'FoodCategories_อาหารคลีน',                 
-        'FoodCategories_อาหารจานด่วน',              
-        'FoodCategories_อาหารตามสั่ง',               
-        'FoodCategories_อาหารทะเล',                
-        'FoodCategories_อาหารอีสาน',                
-        'FoodCategories_อาหารฮาลาล',               
-        'FoodCategories_อาหารเหนือ',                
-        'FoodCategories_อาหารใต้',                  
-        'FoodCategories_เครื่องดื่ม',                  
-        'FoodCategories_ไก่ทอด'
-        ]
-        self.col = [
-        "Merchant_lat",
-        "Merchant_lon",                  
-        'NationFoodCategory_International',
-        'NationFoodCategory_Isram',
-        'NationFoodCategory_Japanese',
-        'NationFoodCategory_Korean',
-        'NationFoodCategory_Myanmar',     
-        'NationFoodCategory_Thai',         
-        'NationFoodCategory_Vietnam',
-        'FoodCategories_FastFood',
-        'FoodCategories_QuickMeal',
-        'FoodCategories_ขนมจีน',
-        'FoodCategories_ของหวาน',                  
-        'FoodCategories_ปิ้งย่าง',
-        'FoodCategories_พิซซ่า',                     
-        'FoodCategories_ร้านก๋วยเตี๋ยว',               
-        'FoodCategories_ร้านอาหาร',                 
-        'FoodCategories_สปาเก็ตตี้',                  
-        'FoodCategories_สุกี้ยากี้',
-        'FoodCategories_สเต๊ก',                     
-        'FoodCategories_อาหารคลีน',                 
-        'FoodCategories_อาหารจานด่วน',              
-        'FoodCategories_อาหารตามสั่ง',               
-        'FoodCategories_อาหารทะเล',                
-        'FoodCategories_อาหารอีสาน',                
-        'FoodCategories_อาหารฮาลาล',               
-        'FoodCategories_อาหารเหนือ',                
-        'FoodCategories_อาหารใต้',                  
-        'FoodCategories_เครื่องดื่ม',                  
-        'FoodCategories_ไก่ทอด',
-        "riderInitial_to_Merchant_EucDistance",
-        "riderInitial_to_Merchant_ShortestDistance",
-        "day_of_week_sin",                                           
-        "day_of_week_cos",                                          
-        "calledMerchantTime_to_arrivedAtMerchantTime_prediction (m)"]
+        self.NationFoodCategories = ['NationFoodCategory_International', 'NationFoodCategory_Isram', 'NationFoodCategory_Japanese', 'NationFoodCategory_Korean',
+                                    'NationFoodCategory_Myanmar', 'NationFoodCategory_Thai', 'NationFoodCategory_Vietnam']
+        self.FoodCategories = ['FoodCategories_FastFood', 'FoodCategories_QuickMeal', 'FoodCategories_ขนมจีน', 'FoodCategories_ของหวาน', 'FoodCategories_ปิ้งย่าง',
+                                'FoodCategories_พิซซ่า', 'FoodCategories_ร้านก๋วยเตี๋ยว', 'FoodCategories_ร้านอาหาร', 'FoodCategories_สปาเก็ตตี้', 'FoodCategories_สุกี้ยากี้',
+                                'FoodCategories_สเต๊ก', 'FoodCategories_อาหารคลีน', 'FoodCategories_อาหารจานด่วน', 'FoodCategories_อาหารตามสั่ง', 'FoodCategories_อาหารทะเล',                
+                                'FoodCategories_อาหารอีสาน', 'FoodCategories_อาหารฮาลาล', 'FoodCategories_อาหารเหนือ', 'FoodCategories_อาหารใต้', 'FoodCategories_เครื่องดื่ม',                  
+                                'FoodCategories_ไก่ทอด']
+        self.col = ["Merchant_lat", "Merchant_lon", 'NationFoodCategory_International', 'NationFoodCategory_Isram', 'NationFoodCategory_Japanese',
+                    'NationFoodCategory_Korean', 'NationFoodCategory_Myanmar', 'NationFoodCategory_Thai', 'NationFoodCategory_Vietnam', 'FoodCategories_FastFood',
+                    'FoodCategories_QuickMeal', 'FoodCategories_ขนมจีน', 'FoodCategories_ของหวาน', 'FoodCategories_ปิ้งย่าง', 'FoodCategories_พิซซ่า',                     
+                    'FoodCategories_ร้านก๋วยเตี๋ยว', 'FoodCategories_ร้านอาหาร', 'FoodCategories_สปาเก็ตตี้', 'FoodCategories_สุกี้ยากี้', 'FoodCategories_สเต๊ก',                     
+                    'FoodCategories_อาหารคลีน', 'FoodCategories_อาหารจานด่วน', 'FoodCategories_อาหารตามสั่ง', 'FoodCategories_อาหารทะเล',                
+                    'FoodCategories_อาหารอีสาน', 'FoodCategories_อาหารฮาลาล', 'FoodCategories_อาหารเหนือ', 'FoodCategories_อาหารใต้', 'FoodCategories_เครื่องดื่ม',                  
+                    'FoodCategories_ไก่ทอด', "riderInitial_to_Merchant_EucDistance", "riderInitial_to_Merchant_ShortestDistance", "day_of_week_sin",                                           
+                    "day_of_week_cos", "calledMerchantTime_to_arrivedAtMerchantTime_prediction (m)"]
 
         self.col_prime = ["u_lat", "u_lon", "v_lat", "v_lon","euc_dist","shortest_dist" ,"day_of_week_sin" ,"day_of_week_cos"]
 

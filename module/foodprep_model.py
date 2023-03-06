@@ -42,6 +42,24 @@ class FoodPrepModel:
         return np.sqrt(del_x**2 + del_y**2)
     
     def batch_predict(self, locations, day_of_week=[], NationFoodCategory=[], FoodCategory = [], approx=True):
+        '''
+
+        input:
+        - locations = numpy array [(u_i,v_i) | i] where u_i = (lat,long) of the rider location, 
+        v_i = (lat_long) of the merchant location 
+        - (optional) day_of_week = numpy array [day_i | i] : choose one of these -> "MON", "TUE, "WED", "THU", "FRI", "SAT", "SUN"
+        - (optional) NationFoodCategory = numpy array [N_i | i] : choose one of the strings in self.NationFoodCategories (in __init__)
+        - (optional) FoodCategory = numpy array [F_i | i] : choose one of the strings in self.FoodCategories (in __init__)
+        
+        output:
+        - The array of predictions of the duration in minute (m) needed for a rider to travel from their position to merchant finishing their preparation
+        
+        Note: 
+        - When you set 'approx' to True, the model will approximate certain input feature for the sake of performance (speed) of prediction.
+        - When you set 'approx' to False, the model will compute certain input feature more accurately but in expense of the speed of the prediciton.
+        
+        '''
+ 
         n = len(locations)
         idx = np.arange(0,n)
         if len(day_of_week) != n : 
